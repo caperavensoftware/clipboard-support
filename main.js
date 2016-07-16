@@ -1,4 +1,8 @@
 var menubar = require('menubar');
+var path = require('path');
+var electron = require('electron');
+const app = electron.app;
+
 var opts = {
   tooltip: "clipboard helper",
   width: 400,
@@ -8,5 +12,8 @@ var opts = {
 var mb = menubar(opts);
 
 mb.on('ready', function ready () {
-  console.log('app is ready')
+});
+
+mb.on('after-create-window', function () {
+    mb.window.openDevTools();
 });
